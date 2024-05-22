@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [SerializeField] private Player player;
-    [SerializeField] private Spawner spawner;
+    [SerializeField] private PipeSpawner spawner;
 
     [SerializeField] private Text scoreText;
     [SerializeField] public Text wordText;

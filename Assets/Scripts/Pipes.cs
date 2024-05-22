@@ -26,7 +26,7 @@ public class Pipes : MonoBehaviour
 
         string random_letter = ((char)UnityEngine.Random.Range(0x61, 0x71)).ToString();
 
-        if (UnityEngine.Random.Range(0, 10) > 5)
+        if (UnityEngine.Random.Range(0, 100) > 5)
         {
             TopText.text = missing_letter;
             BottomText.text = random_letter;
