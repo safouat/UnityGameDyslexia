@@ -11,13 +11,15 @@ public class Pipes : MonoBehaviour
     public TextMesh BottomText;
     public float speed = 1000f;
     public float gap = 3f;
+    public string word;
     private float leftEdge;
+    public bool isCollided = false;
 
     private void Start()
     {
         leftEdge = Camera.main.ScreenToWorldPoint(Vector3.zero).x - 1f;
         top.position += Vector3.up * gap / 2;
-        string word = GameManager.Instance.GetLetter();
+        //string word = GameManager.Instance.GetLetter();
 
         // Generate a random index within the bounds of the word string
         int missing_idx = UnityEngine.Random.Range(0, word.Length);

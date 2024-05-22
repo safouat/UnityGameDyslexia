@@ -68,10 +68,18 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Top") || other.gameObject.CompareTag("Bottom"))
         {
-            other.gameObject.SetActive(false);
+            Pipes pipe = other.gameObject.transform.parent.GetComponent<Pipes>();
             string letter = other.gameObject.GetComponent<TextMesh>().text;
+            
+            if (!pipe.isCollided)
+            {
+                other.gameObject.SetActive(false);
+                pipe.TopText.GetComponent<BoxCollider2D>().enabled = false;
+                pipe.BottomText.GetComponent<BoxCollider2D>().enabled = false;
+                pipe.isCollided = true;
+            } 
             //Debug.LogError(letter);
-            GameManager.Instance.HandleScore(letter);
+            //GameManager.Instance.HandleScore(letter);
 
         }
         if (other.gameObject.CompareTag("Obstacle"))

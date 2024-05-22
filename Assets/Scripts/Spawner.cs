@@ -3,7 +3,7 @@
 public class PipeSpawner : MonoBehaviour
 {
     public Pipes prefab;
-    public float spawnRate = 1f;
+    public float spawnRate = .5f;
     public float minHeightEasy = -2f;
     public float maxHeightEasy = 2f;
     public float minHeightMedium = -2f;
@@ -33,6 +33,7 @@ public class PipeSpawner : MonoBehaviour
     private void Spawn()
     {
         Pipes pipes = Instantiate(prefab, transform.position, Quaternion.identity);
+        pipes.word = GameManager.Instance.GetLetter();
         SetDifficulty();
         pipes.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
         pipes.gap = GetVerticalGap();
