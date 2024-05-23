@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -45,6 +46,10 @@ public class Pipes : MonoBehaviour
     {
         transform.position += speed * Time.deltaTime * Vector3.left;
 
+        if (!isCollided && transform.position.x < -0.5f) {
+            GameManager.Instance.HandleScore("");
+            isCollided = true;
+        }
         if (transform.position.x < leftEdge)
         {
             Destroy(gameObject);

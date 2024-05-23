@@ -487,6 +487,7 @@ MonoBehaviour:
   speed: 5
   gap: 3
   word: 
+  isCollided: 0
 --- !u!1 &7818968135391167135
 GameObject:
   m_ObjectHideFlags: 0
