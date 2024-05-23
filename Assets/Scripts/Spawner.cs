@@ -13,9 +13,9 @@ public class PipeSpawner : MonoBehaviour
     public float minHeightInsane = -4f;
     public float maxHeightInsane = 5f;
     public float verticalGapEasy = 20f; // Adjusted vertical gap for easy level
-    public float verticalGapMedium = 8f; // Adjusted vertical gap for medium level
-    public float verticalGapHard = 2f; // Adjusted vertical gap for hard level
-    public float verticalGapInsane = 1f; // Adjusted vertical gap for insane level
+    public float verticalGapMedium = 10f; // Adjusted vertical gap for medium level
+    public float verticalGapHard = 7f; // Adjusted vertical gap for hard level
+    public float verticalGapInsane = 5f; // Adjusted vertical gap for insane level
     public float minHeight;
     public float maxHeight;
 
@@ -55,6 +55,8 @@ public class PipeSpawner : MonoBehaviour
             maxHeight = maxHeightEasy;
             spawnRate = 3f;
             GameManager.Instance.SetLv("Easy");
+            OnDisable();
+            OnEnable();
         }
         else if (score >= 5 && score < 10)
         {
@@ -62,6 +64,8 @@ public class PipeSpawner : MonoBehaviour
             maxHeight = maxHeightMedium;
             spawnRate = 2f;
             GameManager.Instance.SetLv("Medium");
+            OnDisable();
+            OnEnable();
         }
         else if (score >= 10 && score < 15)
         {
@@ -69,12 +73,16 @@ public class PipeSpawner : MonoBehaviour
             maxHeight = maxHeightHard;
             spawnRate = 1f;
             GameManager.Instance.SetLv("Hard");
+            OnDisable();
+            OnEnable();
         }
         else {
             minHeight = minHeightInsane;
             maxHeight = maxHeightInsane;
             spawnRate = 0.5f;
             GameManager.Instance.SetLv("Insane");
+            OnDisable();
+            OnEnable();
         }
     }
     private float GetVerticalGap()
