@@ -28,6 +28,10 @@ public class Pipes : MonoBehaviour
         //Debug.LogError(missing_letter); // Retrieve the character at the random index and convert it to a string
 
         string random_letter = ((char)UnityEngine.Random.Range(0x61, 0x71)).ToString();
+        while (random_letter == missing_letter)
+        {
+            random_letter = ((char)UnityEngine.Random.Range(0x61, 0x71)).ToString();
+        }
 
         if (UnityEngine.Random.Range(0, 100) > 5)
         {
