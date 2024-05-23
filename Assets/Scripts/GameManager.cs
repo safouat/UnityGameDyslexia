@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
@@ -12,13 +14,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Text scoreText;
     [SerializeField] public Text wordText;
+    [SerializeField] public Text levelText;
 
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject gameOver;
 
+
+    private int lv;
     private int score;
     public int Score => score;
-    private int i = 0;
+    private int i;
     private static string[] list = {
     "cat", "dog", "sun", "run", "ball",
     "cake", "book", "fish", "milk", "tree",
@@ -42,8 +47,21 @@ public class GameManager : MonoBehaviour
     "recalcitrant", "serendipity", "transmogrify", "ubiquitous", "verisimilitude"
 };
 
-    public Queue<string> pipeQueue = new Queue<string>(list);
+    public Queue<string> pipeQueue;
     public string last_letter;
+    
+
+        private string[] GetListWords()
+        {
+            string url = "https://example.com/api/words";
+            using (HttpClient client = new HttpClient())
+            {
+                string json = client.GetStringAsync(url).Result;
+                string[] words = JsonUtility.FromJson<string[]>(json);
+                Debug.Log(words);
+                return words;
+            }
+    }
 
     private void Awake()
     {
@@ -81,7 +99,10 @@ public class GameManager : MonoBehaviour
 
     public void Play()
     {
+        pipeQueue = new Queue<string>(list);
+        i = 0;
         score = 0;
+        lv = 0;
         scoreText.text = score.ToString();
 
         playButton.SetActive(false);
@@ -139,6 +160,10 @@ public class GameManager : MonoBehaviour
 
         wordText.text = list[i].ToString();
         i++;
+    }
+
+    public void SetLv(string lv) {
+        levelText.text = "Level: " + lv.ToString();
     }
 
 

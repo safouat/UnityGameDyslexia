@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +28,10 @@ public class Pipes : MonoBehaviour
         //Debug.LogError(missing_letter); // Retrieve the character at the random index and convert it to a string
 
         string random_letter = ((char)UnityEngine.Random.Range(0x61, 0x71)).ToString();
+        while (random_letter == missing_letter)
+        {
+            random_letter = ((char)UnityEngine.Random.Range(0x61, 0x71)).ToString();
+        }
 
         if (UnityEngine.Random.Range(0, 100) > 5)
         {
@@ -45,6 +50,10 @@ public class Pipes : MonoBehaviour
     {
         transform.position += speed * Time.deltaTime * Vector3.left;
 
+        if (!isCollided && transform.position.x < -0.5f) {
+            GameManager.Instance.HandleScore("");
+            isCollided = true;
+        }
         if (transform.position.x < leftEdge)
         {
             Destroy(gameObject);

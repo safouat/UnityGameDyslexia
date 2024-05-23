@@ -3,16 +3,19 @@
 public class PipeSpawner : MonoBehaviour
 {
     public Pipes prefab;
-    public float spawnRate = .5f;
+    public float spawnRate = 3f;
     public float minHeightEasy = -2f;
     public float maxHeightEasy = 2f;
     public float minHeightMedium = -2f;
     public float maxHeightMedium = 3f;
     public float minHeightHard = -3f;
     public float maxHeightHard = 4f;
+    public float minHeightInsane = -4f;
+    public float maxHeightInsane = 5f;
     public float verticalGapEasy = 20f; // Adjusted vertical gap for easy level
     public float verticalGapMedium = 8f; // Adjusted vertical gap for medium level
     public float verticalGapHard = 2f; // Adjusted vertical gap for hard level
+    public float verticalGapInsane = 1f; // Adjusted vertical gap for insane level
     public float minHeight;
     public float maxHeight;
 
@@ -46,26 +49,32 @@ public class PipeSpawner : MonoBehaviour
 
     private void SetDifficulty()
     {
-        if (score < 2)
+        if (score < 5)
         {
             minHeight = minHeightEasy;
             maxHeight = maxHeightEasy;
+            spawnRate = 3f;
+            GameManager.Instance.SetLv("Easy");
         }
-        else if (score >= 1 && score < 5)
+        else if (score >= 5 && score < 10)
         {
             minHeight = minHeightMedium;
             maxHeight = maxHeightMedium;
+            spawnRate = 2f;
+            GameManager.Instance.SetLv("Medium");
         }
         else if (score >= 10 && score < 15)
         {
             minHeight = minHeightHard;
-            float maxHeight = maxHeightHard;
+            maxHeight = maxHeightHard;
+            spawnRate = 1f;
+            GameManager.Instance.SetLv("Hard");
         }
-        // Add more conditions as needed for higher difficulty levels
-        else
-        {
-            // Define your own logic for even higher difficulty levels
-            // For example, you could keep increasing the difficulty gradually
+        else {
+            minHeight = minHeightInsane;
+            maxHeight = maxHeightInsane;
+            spawnRate = 0.5f;
+            GameManager.Instance.SetLv("Insane");
         }
     }
     private float GetVerticalGap()
@@ -87,7 +96,7 @@ public class PipeSpawner : MonoBehaviour
         {
             // Define your own logic for even higher difficulty levels
             // For example, you could keep decreasing the vertical gap gradually
-            return verticalGapHard;
+            return verticalGapInsane;
         }
     }
 }

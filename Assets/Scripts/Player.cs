@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
                 pipe.isCollided = true;
             } 
             //Debug.LogError(letter);
-            //GameManager.Instance.HandleScore(letter);
+            GameManager.Instance.HandleScore(letter);
 
         }
         if (other.gameObject.CompareTag("Obstacle"))

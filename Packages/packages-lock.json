@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.github.asus4.tflite": {
+      "version": "https://github.com/asus4/tf-lite-unity-sample.git?path=/Packages/com.github.asus4.tflite",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "f987411d794b758435fb7aca9dc17e31f38ddfb1"
+    },
     "com.unity.2d.animation": {
       "version": "9.1.0",
       "depth": 0,
@@ -81,7 +88,7 @@
     },
     "com.unity.burst": {
       "version": "1.8.13",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
@@ -115,9 +122,35 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.jobs": {
+      "version": "0.50.0-preview.9",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.burst": "1.6.4",
+        "com.unity.collections": "1.2.3",
+        "com.unity.mathematics": "1.2.1",
+        "com.unity.nuget.mono-cecil": "1.10.1"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.mathematics": {
       "version": "1.2.6",
       "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.mono-cecil": {
+      "version": "1.11.4",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.1",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -150,6 +183,30 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
+    },
+    "voxell.speech": {
+      "version": "https://github.com/nixon-voxell/UnityTTS.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.0.2",
+        "voxell.util": "1.4.2",
+        "com.github.asus4.tflite": "2.4.1"
+      },
+      "hash": "a6ef40dbb30d42417f3880d245089159719e416c"
+    },
+    "voxell.util": {
+      "version": "https://github.com/voxell-tech/UnityUtil.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.mathematics": "1.2.6",
+        "com.unity.collections": "1.2.3",
+        "com.unity.jobs": "0.50.0-preview.9",
+        "com.unity.burst": "1.6.5",
+        "com.unity.test-framework": "1.1.30"
+      },
+      "hash": "a3397bbd88f8e0d3ff2214b8c4419ea4c1a787bf"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
