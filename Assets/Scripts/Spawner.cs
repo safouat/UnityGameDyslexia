@@ -19,6 +19,7 @@ public class PipeSpawner : MonoBehaviour
     public float minHeight;
     public float maxHeight;
 
+    public Parallax parallax;
 
     private int score;
 
@@ -37,7 +38,7 @@ public class PipeSpawner : MonoBehaviour
     {
         Pipes pipes = Instantiate(prefab, transform.position, Quaternion.identity);
         pipes.word = GameManager.Instance.GetLetter();
-        SetDifficulty();
+        //SetDifficulty();
         pipes.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
         pipes.gap = GetVerticalGap();
     }
@@ -47,7 +48,7 @@ public class PipeSpawner : MonoBehaviour
         score = newScore;
     }
 
-    private void SetDifficulty()
+    public void SetDifficulty()
     {
         if (score < 5)
         {
@@ -83,6 +84,9 @@ public class PipeSpawner : MonoBehaviour
             GameManager.Instance.SetLv("Insane");
             OnDisable();
             OnEnable();
+        }
+        if (score > 0 && (score % 5) == 0) {
+            parallax.ToggleBackground();
         }
     }
     private float GetVerticalGap()

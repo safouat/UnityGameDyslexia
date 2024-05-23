@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
             DecreaseScore();
             ShowWords();
         }
+        spawner.SetDifficulty();
     }
 
     public void Play()

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using Voxell.Speech.TTS;
+﻿using Microsoft.Unity.VisualStudio.Editor;
+using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
@@ -7,13 +7,25 @@ public class Parallax : MonoBehaviour
 
     public float animationSpeed = 1f;
     private MeshRenderer meshRenderer;
-    public TextToSpeech textToSpeech;
+    public Texture2D backgroundTexture1;
+    public Texture2D backgroundTexture2;
+    private int i = 0;
 
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        string a = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-        textToSpeech.Speak(a);
+    }
+
+    public void ToggleBackground()
+    {
+        if (i == 0) {
+            meshRenderer.material.mainTexture = backgroundTexture2;
+            i = 1;
+        } else {
+            meshRenderer.material.mainTexture = backgroundTexture1;
+            i = 0;
+        }
+        meshRenderer.material.mainTextureOffset = Vector2.zero;
     }
 
     private void Update()
